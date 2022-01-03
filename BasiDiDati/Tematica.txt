@@ -1,0 +1,27 @@
+-- Table: public.Tematica
+
+-- DROP TABLE public."Tematica";
+
+CREATE TABLE IF NOT EXISTS public."Tematica"
+(
+    "Tematica" "char"[] NOT NULL,
+    "ID_Corso" integer NOT NULL,
+    "Keywords" "char"[],
+    CONSTRAINT "FK_Tematica" FOREIGN KEY ("ID_Corso")
+        REFERENCES public."Corso" ("ID_Corso") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public."Tematica"
+    OWNER to postgres;
+-- Index: fki_FK_Tematica
+
+-- DROP INDEX public."fki_FK_Tematica";
+
+CREATE INDEX "fki_FK_Tematica"
+    ON public."Tematica" USING btree
+    ("ID_Corso" ASC NULLS LAST)
+    TABLESPACE pg_default;
