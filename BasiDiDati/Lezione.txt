@@ -1,0 +1,37 @@
+-- Table: public.Lezione
+
+-- DROP TABLE public."Lezione";
+
+CREATE TABLE IF NOT EXISTS public."Lezione"
+(
+    "ID_Lezione" integer NOT NULL,
+    "ID_Corso" integer,
+    "Descrizione" "char"[],
+    "Titolo" "char"[] NOT NULL,
+    "Durata" time without time zone NOT NULL,
+    "Data_inizio" date[] NOT NULL,
+    "Ora_inizio" time without time zone NOT NULL,
+    "Num_Iscritti" integer,
+    "Tasso_Frequenza" double precision,
+    "ID_Operatore" integer,
+    "Numero_Lezioni" integer,
+    CONSTRAINT "PK" PRIMARY KEY ("ID_Lezione")
+        INCLUDE("ID_Lezione"),
+    CONSTRAINT "FK" FOREIGN KEY ("ID_Corso")
+        REFERENCES public."Corso" ("ID_Corso") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public."Lezione"
+    OWNER to postgres;
+-- Index: fki_FK
+
+-- DROP INDEX public."fki_FK";
+
+CREATE INDEX "fki_FK"
+    ON public."Lezione" USING btree
+    ("ID_Corso" ASC NULLS LAST)
+    TABLESPACE pg_default;
