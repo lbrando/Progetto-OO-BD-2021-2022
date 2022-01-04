@@ -1,6 +1,6 @@
 -- Table: public.Corso
 
--- DROP TABLE IF EXISTS public."Corso";
+-- DROP TABLE public."Corso";
 
 CREATE TABLE IF NOT EXISTS public."Corso"
 (
@@ -11,13 +11,13 @@ CREATE TABLE IF NOT EXISTS public."Corso"
     "Descrizione" character varying(500) COLLATE pg_catalog."default",
     "Presenze" double precision,
     "Iscritti" integer NOT NULL,
-    "ID_Operatore" integer,
+    "ID_Operatore" character varying COLLATE pg_catalog."default",
     "Numero Lezioni" integer,
     "ID_STUDENTE" integer,
     "NUM_STUDENTI" integer,
     CONSTRAINT "Corso_pkey" PRIMARY KEY ("ID_Corso"),
     CONSTRAINT "Unique_Corso" UNIQUE ("Tematica"),
-    CONSTRAINT "FK_Corso" FOREIGN KEY ("ID_Operatore")
+    CONSTRAINT "Corso_ID_Operatore_fkey" FOREIGN KEY ("ID_Operatore")
         REFERENCES public."Operatore" ("ID_Operatore") MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
@@ -25,13 +25,13 @@ CREATE TABLE IF NOT EXISTS public."Corso"
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public."Corso"
+ALTER TABLE public."Corso"
     OWNER to postgres;
 -- Index: fki_FK_Corso
 
--- DROP INDEX IF EXISTS public."fki_FK_Corso";
+-- DROP INDEX public."fki_FK_Corso";
 
-CREATE INDEX IF NOT EXISTS "fki_FK_Corso"
+CREATE INDEX "fki_FK_Corso"
     ON public."Corso" USING btree
-    ("ID_Operatore" ASC NULLS LAST)
+    ("ID_Operatore" COLLATE pg_catalog."default" ASC NULLS LAST)
     TABLESPACE pg_default;
