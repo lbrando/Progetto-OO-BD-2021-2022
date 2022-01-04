@@ -1,0 +1,6 @@
+INSERT INTO public."Tematica"(
+	"Tematica", "ID_Corso", "Keywords")
+	VALUES ('{Inglese}', '001', '{lingua straniera, inglese, english}'),
+	('{Algebra}', '002', '{insiemi, tavole di verità, Zn, funzioni, reticoli, polinomi, numeri primi, principio di induzione}'),
+	('{Programmazione}', '003', '{linguaggio, C, progettazione, programma, ciclo, funzione, variabile, memoria, puntatore, lista}'),
+	('{Matematica}', '004', '{insiemi, funzioni, studio di funzione, limite, derivata, dominio, serie numerica, integrali, numeri complessi, primitive}');
