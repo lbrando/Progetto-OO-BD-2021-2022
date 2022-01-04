@@ -1,0 +1,11 @@
+INSERT INTO public."Test"(
+	"ID_Test", "ID_Operatore", "Titolo", "Descrizione", "Durata", "Ora_inizio", "Minimo_punteggio", "Minimo_presenze", "Voti", "ID_STUDENTE")
+	VALUES ('1000', '1', '{Test Inglese}', '{Test di autovalutazione di inglese}','{01:00:00}','09:30:00','{50}','{75}','40','1234'),
+	('2000', '2', '{Test Algebra}', '{Rispondere a 3 quesiti di teoria e svolgere 5 esercizi sugli argomenti trattati nel corso}','{03:00:00}','11:00:00','{50}','{75}','80','1234'),
+	('3000', '3', '{Test Programmazione}', '{4 quesiti di cui va scritto un codice che sviluppi la problematica}','{02:00:00}','10:00:00','{50}','{75}','92','1234'),
+	('4000', '2', '{Test Analisi}', '{Rispondere ai 10 quesiti di teoria e svolgere i 5 esercizi: dominio, studio di funzione, limite ed integrale o serie numerica}','{03:30:00}','09:00:00','{50}','{75}','45','1234'),
+	
+	('1001', '1', '{Test Inglese}', '{Test di autovalutazione di inglese}','{01:00:00}','09:30:00','{50}','{75}','100','4321'),
+	('2002', '2', '{Test Algebra}', '{Rispondere a 3 quesiti di teoria e svolgere 5 esercizi sugli argomenti trattati nel corso}','{03:00:00}','11:00:00','{50}','{75}','95','4321'),
+	('3003', '3', '{Test Programmazione}', '{4 quesiti di cui va scritto un codice che sviluppi la problematica}','{02:00:00}','10:00:00','{50}','{75}','80','4321'),
+	('4004', '2', '{Test Analisi}', '{Rispondere ai 10 quesiti di teoria e svolgere i 5 esercizi: dominio, studio di funzione,limite ed integrale o serie numerica}','{03:30:00}','09:00:00','{50}','{75}','98','4321');
