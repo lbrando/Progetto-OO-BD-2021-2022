@@ -1,4 +1,4 @@
-INSERT INTO public."Operatore "(
+INSERT INTO public."Operatore"(
 	"ID_Operatore")
 	VALUES ('1'),
 	('2'),
