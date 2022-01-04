@@ -1,6 +1,6 @@
 -- Table: public.Studente
 
--- DROP TABLE IF EXISTS public."Studente";
+-- DROP TABLE public."Studente";
 
 CREATE TABLE IF NOT EXISTS public."Studente"
 (
@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS public."Studente"
     "Cognome" character varying[] COLLATE pg_catalog."default" NOT NULL,
     "Punteggio_test" integer[] NOT NULL,
     "Tasso_frequenza" integer[] NOT NULL,
-    "ID_Operatore" integer,
+    "ID_Operatore" character varying COLLATE pg_catalog."default",
     "ID_Corso" integer NOT NULL,
     CONSTRAINT "Studente_pkey" PRIMARY KEY ("ID_Studente"),
     CONSTRAINT "FK_Studente" FOREIGN KEY ("ID_Operatore")
@@ -20,16 +20,16 @@ CREATE TABLE IF NOT EXISTS public."Studente"
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public."Studente"
+ALTER TABLE public."Studente"
     OWNER to postgres;
 
 COMMENT ON COLUMN public."Studente"."ID_Corso"
     IS 'Corso a cui sono iscritti';
 -- Index: fki_FK_Studente
 
--- DROP INDEX IF EXISTS public."fki_FK_Studente";
+-- DROP INDEX public."fki_FK_Studente";
 
-CREATE INDEX IF NOT EXISTS "fki_FK_Studente"
+CREATE INDEX "fki_FK_Studente"
     ON public."Studente" USING btree
-    ("ID_Operatore" ASC NULLS LAST)
+    ("ID_Operatore" COLLATE pg_catalog."default" ASC NULLS LAST)
     TABLESPACE pg_default;
