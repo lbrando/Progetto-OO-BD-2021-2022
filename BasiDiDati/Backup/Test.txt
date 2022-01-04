@@ -1,11 +1,11 @@
 -- Table: public.Test
 
--- DROP TABLE IF EXISTS public."Test";
+-- DROP TABLE public."Test";
 
 CREATE TABLE IF NOT EXISTS public."Test"
 (
     "ID_Test" integer NOT NULL,
-    "ID_Operatore" integer NOT NULL,
+    "ID_Operatore" character varying COLLATE pg_catalog."default" NOT NULL,
     "Titolo" character varying[] COLLATE pg_catalog."default" NOT NULL,
     "Descrizione" character varying[] COLLATE pg_catalog."default",
     "Durata" time without time zone[] NOT NULL,
@@ -23,13 +23,13 @@ CREATE TABLE IF NOT EXISTS public."Test"
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public."Test"
+ALTER TABLE public."Test"
     OWNER to postgres;
 -- Index: fki_FK_Test
 
--- DROP INDEX IF EXISTS public."fki_FK_Test";
+-- DROP INDEX public."fki_FK_Test";
 
-CREATE INDEX IF NOT EXISTS "fki_FK_Test"
+CREATE INDEX "fki_FK_Test"
     ON public."Test" USING btree
-    ("ID_Operatore" ASC NULLS LAST)
+    ("ID_Operatore" COLLATE pg_catalog."default" ASC NULLS LAST)
     TABLESPACE pg_default;
