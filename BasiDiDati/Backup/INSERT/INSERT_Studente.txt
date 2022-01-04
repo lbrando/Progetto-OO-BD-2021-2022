@@ -1,0 +1,8 @@
+INSERT INTO public."Studente"(
+	"ID_Studente", "Nome", "Cognome", "Punteggio_test", "Tasso_frequenza", "ID_Operatore")
+	VALUES ('1234', '{Tessa}', '{Gray}', '{0}', '{0}', '1'),
+	('4567', '{Julian}', '{Blackthorn}', '{0}', '{0}', '1'),
+	('7890', '{Peeta}', '{Mellark}', '{0}', '{0}', '2'),
+	('4321', '{Katniss}', '{Everdeen}', '{0}', '{0}', '2'),
+	('7654', '{Troy Bolton}', '{Gray}', '{0}', '{0}', '3'),
+	('0987', '{Ryan}', '{Evans}', '{0}', '{0}', '3');
