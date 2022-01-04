@@ -1,17 +1,19 @@
 -- Table: public.Tematica
 
--- DROP TABLE IF EXISTS public."Tematica";
+-- DROP TABLE public."Tematica";
 
 CREATE TABLE IF NOT EXISTS public."Tematica"
 (
     "Tematica" "char"[] NOT NULL,
     "ID_Corso" integer NOT NULL,
-    "Keywords" "char"[]
+    "Keywords" "char"[],
+    CONSTRAINT "Tematica_pk" PRIMARY KEY ("Tematica")
+        INCLUDE("Tematica")
 )
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public."Tematica"
+ALTER TABLE public."Tematica"
     OWNER to postgres;
 
 REVOKE ALL ON TABLE public."Tematica" FROM PUBLIC;
@@ -21,9 +23,9 @@ GRANT ALL ON TABLE public."Tematica" TO postgres;
 GRANT INSERT, SELECT ON TABLE public."Tematica" TO PUBLIC;
 -- Index: fki_FK_Tematica
 
--- DROP INDEX IF EXISTS public."fki_FK_Tematica";
+-- DROP INDEX public."fki_FK_Tematica";
 
-CREATE INDEX IF NOT EXISTS "fki_FK_Tematica"
+CREATE INDEX "fki_FK_Tematica"
     ON public."Tematica" USING btree
     ("ID_Corso" ASC NULLS LAST)
     TABLESPACE pg_default;
