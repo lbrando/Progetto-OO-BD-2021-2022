@@ -1,6 +1,6 @@
 -- Table: public.Lezione
 
--- DROP TABLE IF EXISTS public."Lezione";
+-- DROP TABLE public."Lezione";
 
 CREATE TABLE IF NOT EXISTS public."Lezione"
 (
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS public."Lezione"
     "Ora_inizio" time without time zone NOT NULL,
     "Num_Iscritti" integer,
     "Tasso_Frequenza" double precision,
-    "ID_Operatore" integer,
+    "ID_Operatore" character varying COLLATE pg_catalog."default",
     "Numero_Lezioni" integer,
     CONSTRAINT "PK" PRIMARY KEY ("ID_Lezione")
         INCLUDE("ID_Lezione"),
@@ -25,13 +25,13 @@ CREATE TABLE IF NOT EXISTS public."Lezione"
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public."Lezione"
+ALTER TABLE public."Lezione"
     OWNER to postgres;
 -- Index: fki_FK
 
--- DROP INDEX IF EXISTS public."fki_FK";
+-- DROP INDEX public."fki_FK";
 
-CREATE INDEX IF NOT EXISTS "fki_FK"
+CREATE INDEX "fki_FK"
     ON public."Lezione" USING btree
     ("ID_Corso" ASC NULLS LAST)
     TABLESPACE pg_default;
