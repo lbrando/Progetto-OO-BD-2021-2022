@@ -1,6 +1,6 @@
 -- Table: public.Studente
 
--- DROP TABLE public."Studente";
+-- DROP TABLE IF EXISTS public."Studente";
 
 CREATE TABLE IF NOT EXISTS public."Studente"
 (
@@ -10,22 +10,26 @@ CREATE TABLE IF NOT EXISTS public."Studente"
     "Punteggio_test" integer[] NOT NULL,
     "Tasso_frequenza" integer[] NOT NULL,
     "ID_Operatore" integer,
+    "ID_Corso" integer NOT NULL,
     CONSTRAINT "Studente_pkey" PRIMARY KEY ("ID_Studente"),
     CONSTRAINT "FK_Studente" FOREIGN KEY ("ID_Operatore")
-        REFERENCES public."Operatore " ("ID_Operatore") MATCH SIMPLE
+        REFERENCES public."Operatore" ("ID_Operatore") MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 )
 
 TABLESPACE pg_default;
 
-ALTER TABLE public."Studente"
+ALTER TABLE IF EXISTS public."Studente"
     OWNER to postgres;
+
+COMMENT ON COLUMN public."Studente"."ID_Corso"
+    IS 'Corso a cui sono iscritti';
 -- Index: fki_FK_Studente
 
--- DROP INDEX public."fki_FK_Studente";
+-- DROP INDEX IF EXISTS public."fki_FK_Studente";
 
-CREATE INDEX "fki_FK_Studente"
+CREATE INDEX IF NOT EXISTS "fki_FK_Studente"
     ON public."Studente" USING btree
     ("ID_Operatore" ASC NULLS LAST)
     TABLESPACE pg_default;
