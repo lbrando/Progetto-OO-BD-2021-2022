@@ -1,0 +1,16 @@
+-- Table: public.Aula
+
+-- DROP TABLE public."Aula";
+
+CREATE TABLE IF NOT EXISTS public."Aula"
+(
+    "NUM_MAX_POSTI" integer NOT NULL,
+    "NUM_PRESENTI" integer NOT NULL,
+    "Percntuale_Occupata" double precision NOT NULL,
+    "ID_Aula" character varying COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public."Aula"
+    OWNER to postgres;
