@@ -1,8 +1,8 @@
--- Table: public.Operatore 
+-- Table: public.Operatore
 
--- DROP TABLE public."Operatore ";
+-- DROP TABLE IF EXISTS public."Operatore";
 
-CREATE TABLE IF NOT EXISTS public."Operatore "
+CREATE TABLE IF NOT EXISTS public."Operatore"
 (
     "ID_Operatore" integer NOT NULL,
     CONSTRAINT "PK_Operatore" PRIMARY KEY ("ID_Operatore")
@@ -11,13 +11,13 @@ CREATE TABLE IF NOT EXISTS public."Operatore "
 
 TABLESPACE pg_default;
 
-ALTER TABLE public."Operatore "
+ALTER TABLE IF EXISTS public."Operatore"
     OWNER to postgres;
 -- Index: fki_ID_Operatore
 
--- DROP INDEX public."fki_ID_Operatore";
+-- DROP INDEX IF EXISTS public."fki_ID_Operatore";
 
-CREATE INDEX "fki_ID_Operatore"
-    ON public."Operatore " USING btree
+CREATE INDEX IF NOT EXISTS "fki_ID_Operatore"
+    ON public."Operatore" USING btree
     ("ID_Operatore" ASC NULLS LAST)
     TABLESPACE pg_default;
