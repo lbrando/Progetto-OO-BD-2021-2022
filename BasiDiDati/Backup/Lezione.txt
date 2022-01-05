@@ -15,12 +15,18 @@ CREATE TABLE IF NOT EXISTS public."Lezione"
     "Tasso_Frequenza" double precision,
     "ID_Operatore" character varying COLLATE pg_catalog."default",
     "Numero_Lezioni" integer,
+    "ID_Aula" character varying COLLATE pg_catalog."default",
     CONSTRAINT "PK" PRIMARY KEY ("ID_Lezione")
         INCLUDE("ID_Lezione"),
     CONSTRAINT "FK" FOREIGN KEY ("ID_Corso")
         REFERENCES public."Corso" ("ID_Corso") MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
+        ON UPDATE CASCADE
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_Aula" FOREIGN KEY ("ID_Aula")
+        REFERENCES public."Aula" ("ID_Aula") MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE NO ACTION,
+    CONSTRAINT "Lezione_Tasso_Frequenza_check" CHECK ("Tasso_Frequenza" >= 0.00::double precision AND "Tasso_Frequenza" <= 100.00::double precision)
 )
 
 TABLESPACE pg_default;
@@ -34,4 +40,12 @@ ALTER TABLE public."Lezione"
 CREATE INDEX "fki_FK"
     ON public."Lezione" USING btree
     ("ID_Corso" ASC NULLS LAST)
+    TABLESPACE pg_default;
+-- Index: fki_FK_Aula
+
+-- DROP INDEX public."fki_FK_Aula";
+
+CREATE INDEX "fki_FK_Aula"
+    ON public."Lezione" USING btree
+    ("ID_Aula" COLLATE pg_catalog."default" ASC NULLS LAST)
     TABLESPACE pg_default;
