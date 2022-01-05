@@ -5,12 +5,16 @@
 CREATE TABLE IF NOT EXISTS public."Aula"
 (
     "NUM_MAX_POSTI" integer NOT NULL,
-    "NUM_PRESENTI" integer NOT NULL,
-    "Percntuale_Occupata" double precision NOT NULL,
-    "ID_Aula" character varying COLLATE pg_catalog."default"
+    "NUM_PRESENTI" integer,
+    "Percentuale_Occupata" double precision,
+    "ID_Aula" character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "PK_Aula" PRIMARY KEY ("ID_Aula")
+        INCLUDE("ID_Aula")
 )
 
 TABLESPACE pg_default;
 
 ALTER TABLE public."Aula"
     OWNER to postgres;
+
+GRANT ALL ON TABLE public."Aula" TO postgres;
