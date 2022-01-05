@@ -8,14 +8,18 @@ CREATE TABLE IF NOT EXISTS public."Studente"
     "Nome" character varying[] COLLATE pg_catalog."default" NOT NULL,
     "Cognome" character varying[] COLLATE pg_catalog."default" NOT NULL,
     "Punteggio_test" integer[] NOT NULL,
-    "Tasso_frequenza" integer[] NOT NULL,
+    "Tasso_frequenza" double precision NOT NULL,
     "ID_Operatore" character varying COLLATE pg_catalog."default",
     "ID_Corso" integer NOT NULL,
+	
     CONSTRAINT "Studente_pkey" PRIMARY KEY ("ID_Studente"),
+	CHECK ("Tasso_frequenza" >=  0.00::double precision AND "Tasso_frequenza" <= 100.00::double precision) ,
     CONSTRAINT "FK_Studente" FOREIGN KEY ("ID_Operatore")
         REFERENCES public."Operatore" ("ID_Operatore") MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
+	    
+
 )
 
 TABLESPACE pg_default;
