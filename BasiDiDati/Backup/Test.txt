@@ -18,7 +18,8 @@ CREATE TABLE IF NOT EXISTS public."Test"
     CONSTRAINT "FK_Test" FOREIGN KEY ("ID_Operatore")
         REFERENCES public."Operatore" ("ID_Operatore") MATCH FULL
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "Test_Voti_check" CHECK ("Voti" >= 0 AND "Voti" <= 100)
 )
 
 TABLESPACE pg_default;
